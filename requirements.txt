@@ -50,4 +50,4 @@ typing_extensions==4.12.2
 urllib3==1.26.20
 Werkzeug==2.2.2
 WTForms==3.0.1
-zipp==3.1.0
+zipp==3.19.1
