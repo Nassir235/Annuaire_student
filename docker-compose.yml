@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+  db:
+    build: ./repository #Construit a partir du dockerfile actuel
+    volumes:
+      - db_data:/var/lib/mysql #Monte un volume nomme db_data sur /var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: 266139
+        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        MYSQL_USER: root
+        MYSQL_PASSWORD: 266139
+        MYSQL_DATABASE: annuaire_student
+   # healthcheck:
+   #   test: ["cmd", "mysqladmin", "ping", "-h", "localhost"]
+   #   timeout: 10s
+    #  retries: 5
+    networks:
+      - my_network
+    ports:
+      - "3315:3306"
+
+  app:
+    build: .
+    # build:
+    #    context: ./backend
+    #   dockerfile: Dockerfile
+    #   args:
+    #     some-arg: 1
+    networks:
+      - my_network
+    ports:
+      - '5000:5000'
+    volumes:
+      - data:/annuaire_student/instance
+    #env_file:
+    #  - annuaire_student.env
+    depends_on:
+      - db
+volumes:
+  data:
+  db_data:
+
+networks:
+  my_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: '127.0.0.1'

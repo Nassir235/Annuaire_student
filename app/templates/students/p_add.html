@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div class="container has-text-centered">  
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.id.label }} {{ form.id }}<br>
+        {{ form.first_name.label }} {{ form.first_name }}<br>
+        {{ form.last_name.label }} {{ form.last_name }}<br>
+        {{ form.phone.label}} {{ form.phone}} <br>
+        {{ form.departement.label }} {{ form.departement }} <br>
+        {{ form.filiere.label }} {{ form.filiere }} <br>
+        {{ form.Level.label }} {{ form.Level }} <br>
+        {{ form.academic_year.label }} {{ form.academic_year }} <br>
+        {{ form.email.label }} {{ form.email }}<br>
+        <input type="submit" value="Enregistrer">
+    </form>
+
+</div>
+{% endblock content %}

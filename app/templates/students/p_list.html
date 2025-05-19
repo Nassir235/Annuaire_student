@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+ <h1 class="text-center">Liste des etudiants</h1> 
+ <div>
+
+                {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+
+                        <div class="alert alert-success alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+                            {{ message }}
+
+                        </div>
+
+                        {% endfor %}
+                        {% endif %}
+                {% endwith %}
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom </th>
+                            <th>Prenom </th>
+                            <th>Mail </th>
+                            <th>Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <th> {{ student.id }}</th>
+                            <th> {{ student.first_name }}</th>
+                            <th> {{ student.last_name }}</th>
+                            <th> {{ student.email }}</th>
+                            <th>
+                                <a href="{{ url_for('delete', student_id=student.id) }}" class="btn btn-danger" onclick="return confirm('Etes vous sure de vouloir supprimer') "> Supprimer</a>
+                                <a href="{{ url_for('edit_student', student_id=student.id) }}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit">Editer</a>
+                                <a href="{{ url_for('student_details', student_id=student.id) }}" class="btn btn-primary"> Detail</a>
+                            </th>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+ </div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.last_name.label }} {{ form.last_name }}<br>
+
+        {{ form.mdp.label }} {{ form.mdp }} <br>
+
+        {{ form.submit }}
+        
+    <a href="{{ url_for('add_student') }}"> <br> Vous n'avez pas un compte? <br> Se connecter</a>
+
+    </form>
+{% endblock content %}
+
+
