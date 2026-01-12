@@ -19,7 +19,7 @@ Flask-Login==0.6.0
 Flask-MySQL==1.6.0
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==1.0.1
-fonttools==4.47.2
+fonttools==4.61.0
 greenlet==1.1.2
 idna==3.3
 importlib-metadata==4.11.3
